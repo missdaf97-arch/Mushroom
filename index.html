@@ -129,7 +129,7 @@
     box-shadow: 0 2px 20px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     height: auto;
   }
 
@@ -189,21 +189,22 @@
   .tag-dark { background: #E8E3DF; color: var(--mushroom); }
 
   .concept-body {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 0;
-    align-items: flex-start;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .concept-storyboard {
     padding: 32px 40px;
-    border-right: 1px solid var(--cream);
+    border-bottom: 1px solid var(--cream);
+    min-width: 0;
+    overflow: hidden;
   }
 
   .concept-details {
     padding: 32px 40px;
-    align-self: flex-start;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .block-label {
@@ -220,11 +221,10 @@
     display: flex;
     flex-direction: row;
     gap: 24px;
-    overflow-x: auto;
+    overflow-x: visible;
     padding-bottom: 10px;
     padding-right: 40px;
     scrollbar-width: none;
-    scroll-behavior: smooth;
   }
 
   .frames::-webkit-scrollbar {
@@ -391,6 +391,23 @@
   .f3c { background: linear-gradient(160deg, #C8A97E, #E8D5B5); }
   .f3d { background: url('imgs/hf_20260309_155401_9da788aa-1889-4dcf-9d18-15e8f1e0f00d.jpeg') center/cover no-repeat; }
   .f3e { background: url('imgs/hf_20260309_155746_a80f3c05-995c-4e4f-82e0-a4dde9949600.jpeg') center/cover no-repeat; }
+
+  /* HOVER SWAP - Concept 3 frame 6-9s */
+  .f3c-hover {
+    background: url('imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg') center/cover no-repeat !important;
+  }
+  .f3c-hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg') center/cover no-repeat;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    border-radius: 8px;
+  }
+  .f3c-hover:hover::after {
+    opacity: 1;
+  }
 
   .frame-icon {
     font-size: 22px;
@@ -893,14 +910,7 @@
           </div>
 
           <div class="frame" style="align-items:flex-start;">
-            <div style="display:flex; gap:6px; flex-shrink:0;">
-              <a href="imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg" target="_blank">
-                <div class="frame-thumb f3c1" style="width:180px; height:320px; border-radius:8px; background:url('imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
-              </a>
-              <a href="imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg" target="_blank">
-                <div class="frame-thumb f3c2" style="width:180px; height:320px; border-radius:8px; background:url('imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
-              </a>
-            </div>
+            <div class="frame-thumb f3c-hover" style="width:180px; height:320px; border-radius:8px; background:url('imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden; transition: background-image 0.3s ease;"></div>
             <div class="frame-info">
               <div class="frame-time">6–9 с · Продукт</div>
               <div class="frame-desc">Гриб «тонет» в супе / плавает на поверхности бульона</div>

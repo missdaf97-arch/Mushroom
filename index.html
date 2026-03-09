@@ -127,6 +127,9 @@
     overflow: hidden;
     margin-bottom: 40px;
     box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .concept-header {
@@ -1058,21 +1061,14 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const frameContainers = document.querySelectorAll('.frames');
-
-    frameContainers.forEach(function (container) {
-      function onMouseMove(e) {
+    frameContainers.forEach(container => {
+      container.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left;
-        const width = rect.width || 1;
-        let ratio = x / width;
-        if (ratio < 0) ratio = 0;
-        if (ratio > 1) ratio = 1;
-
+        const ratio = x / rect.width;
         const maxScroll = container.scrollWidth - container.clientWidth;
         container.scrollLeft = maxScroll * ratio;
-      }
-
-      container.addEventListener('mousemove', onMouseMove);
+      });
     });
   });
 </script>

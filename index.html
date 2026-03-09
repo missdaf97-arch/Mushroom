@@ -10,12 +10,13 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --kraft: #C8A97E;
-    --kraft-light: #E8D5B5;
-    --kraft-dark: #8B6B45;
-    --mushroom: #7D6B55;
-    --green: #4A6741;
-    --cream: #F5EFE6;
+    /* акцентная палитра на основе #d35c00 */
+    --kraft: #D35C00;
+    --kraft-light: #FF8A33;
+    --kraft-dark: #8B3600;
+    --mushroom: #6A3A14;
+    --green: #2F6E3A;
+    --cream: #FFF3E6;
     --dark: #1C1C1C;
     --mid: #3D3530;
   }
@@ -185,8 +186,10 @@
 
   .concept-body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 0;
+    align-items: flex-start;
+    height: auto;
   }
 
   .concept-storyboard {
@@ -210,19 +213,29 @@
   /* STORYBOARD FRAMES */
   .frames {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    padding-right: 40px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  .frames::-webkit-scrollbar {
+    display: none;
   }
 
   .frame {
     display: flex;
-    gap: 12px;
+    flex-direction: column;
     align-items: flex-start;
+    width: 200px;
   }
 
   .frame-thumb {
-    width: 90px;
-    height: 160px;
+    width: 180px;
+    height: 320px;
     border-radius: 8px;
     flex-shrink: 0;
     display: flex;
@@ -242,8 +255,8 @@
   }
 
   .frame-info {
-    flex: 1;
-    padding-top: 4px;
+    width: 100%;
+    padding-top: 8px;
   }
 
   .frame-time {
@@ -549,9 +562,11 @@
         <div class="frames">
 
           <div class="frame">
-            <div class="frame-thumb f1a">
+            <a href="imgs/f27735f6d89991ed6c89f8d8c4d89d80.jpg" target="_blank">
+              <div class="frame-thumb f1a">
 
-            </div>
+              </div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">0–2 с · Открытие</div>
               <div class="frame-desc">Макро: текстура шляпки гриба заполняет весь экран</div>
@@ -560,7 +575,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f1c"></div>
+            <a href="imgs/Instagram story - 1.png" target="_blank">
+              <div class="frame-thumb f1c"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">2–5 с · Коллаж</div>
               <div class="frame-desc">Тройной стэк: грибы сверху / зелень посередине / сухарики снизу</div>
@@ -569,7 +586,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f1b"></div>
+            <a href="imgs/hf_20260309_144739_7eb26ebe-fbe7-44cf-8845-87c4a1654c4d.jpeg" target="_blank">
+              <div class="frame-thumb f1b"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">5–8 с · Продукт</div>
               <div class="frame-desc">Коробка edsmart медленно выходит из облака пара</div>
@@ -578,7 +597,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f1d"></div>
+            <a href="imgs/a86b848e28aaf8d563bdac3c7b2b5fe8.jpg" target="_blank">
+              <div class="frame-thumb f1d"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">8–12 с · Процесс</div>
               <div class="frame-desc">Парень замешивает суп — крупный план рук и ложки</div>
@@ -587,7 +608,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f1e"></div>
+            <a href="imgs/921c507974d4e399bae8ce7ab565bee1.jpg" target="_blank">
+              <div class="frame-thumb f1e"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">12–15 с · Завершение</div>
               <div class="frame-desc">Пар поднимается над готовым блюдом — логотип на тёмном</div>
@@ -692,7 +715,9 @@
         <div class="frames">
 
           <div class="frame">
-            <div class="frame-thumb f2a"></div>
+            <a href="imgs/hf_20260309_145614_5dcb8717-03ba-4dd6-9afc-e14ebd3f89cf.jpeg" target="_blank">
+              <div class="frame-thumb f2a"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">0–2 с · Hook</div>
               <div class="frame-desc">Крупный план: руки рвут саше — порошок высыпается в slow-mo</div>
@@ -701,7 +726,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f2c"></div>
+            <a href="imgs/Instagram story - 2.png" target="_blank">
+              <div class="frame-thumb f2c"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">2–5 с · Ингредиенты</div>
               <div class="frame-desc">Быстрые cut-cuts: вода льётся → грибы → зелень → сухари</div>
@@ -710,7 +737,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f2d"></div>
+            <a href="imgs/hf_20260309_154044_4c91bde3-6fb9-4559-bdc7-02d2dd591eb9.jpeg" target="_blank">
+              <div class="frame-thumb f2d"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">5–10 с · Герой</div>
               <div class="frame-desc">Парень на кухне — средний план: размешивает, пробует, улыбается</div>
@@ -719,7 +748,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f2b"></div>
+            <a href="imgs/hf_20260309_154730_108d1e6b-e783-4659-af84-d85a4530813c.jpeg" target="_blank">
+              <div class="frame-thumb f2b"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">10–13 с · Продукт-герой</div>
               <div class="frame-desc">Коробка и саше рядом — чистый фон, кинематограф. свет</div>
@@ -728,7 +759,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f2e"></div>
+            <a href="imgs/31075f0cea958fc1e3453cf8f348cc5c.jpg" target="_blank">
+              <div class="frame-thumb f2e"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">13–15 с · Финал</div>
               <div class="frame-desc">Тарелка с готовым супом сверху (flat-lay) + логотип</div>
@@ -833,7 +866,9 @@
         <div class="frames">
 
           <div class="frame">
-            <div class="frame-thumb f3a"></div>
+            <a href="imgs/f27735f6d89991ed6c89f8d8c4d89d80.jpg" target="_blank">
+              <div class="frame-thumb f3a"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">0–3 с · Открытие</div>
               <div class="frame-desc">Экстремальное макро: поверхность гриба на чёрном</div>
@@ -842,7 +877,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f3b"></div>
+            <a href="imgs/Instagram story - 3.png" target="_blank">
+              <div class="frame-thumb f3b"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">3–6 с · 3-panel коллаж</div>
               <div class="frame-desc">Три горизонтальных полосы: гриб · бульон · пар — всё в движении</div>
@@ -852,8 +889,12 @@
 
           <div class="frame" style="align-items:flex-start;">
             <div style="display:flex; gap:6px; flex-shrink:0;">
-              <div class="frame-thumb f3c1" style="width:90px; height:160px; border-radius:8px; background:url('imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
-              <div class="frame-thumb f3c2" style="width:90px; height:160px; border-radius:8px; background:url('imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
+              <a href="imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg" target="_blank">
+                <div class="frame-thumb f3c1" style="width:180px; height:320px; border-radius:8px; background:url('imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
+              </a>
+              <a href="imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg" target="_blank">
+                <div class="frame-thumb f3c2" style="width:180px; height:320px; border-radius:8px; background:url('imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
+              </a>
             </div>
             <div class="frame-info">
               <div class="frame-time">6–9 с · Продукт</div>
@@ -863,7 +904,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f3d"></div>
+            <a href="imgs/hf_20260309_155401_9da788aa-1889-4dcf-9d18-15e8f1e0f00d.jpeg" target="_blank">
+              <div class="frame-thumb f3d"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">9–12 с · Процесс</div>
               <div class="frame-desc">Макро: ложка в руке размешивает суп — крупные круги бульона</div>
@@ -872,7 +915,9 @@
           </div>
 
           <div class="frame">
-            <div class="frame-thumb f3e"></div>
+            <a href="imgs/hf_20260309_155746_a80f3c05-995c-4e4f-82e0-a4dde9949600.jpeg" target="_blank">
+              <div class="frame-thumb f3e"></div>
+            </a>
             <div class="frame-info">
               <div class="frame-time">12–15 с · Эндкард</div>
               <div class="frame-desc">Чёрный экран → маленький логотип «ed» по центру</div>
@@ -1009,6 +1054,28 @@
   <p>edsmart · mushrooms soup · концепты рилс · 2026</p>
   <div class="footer-brand">ed.</div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const frameContainers = document.querySelectorAll('.frames');
+
+    frameContainers.forEach(function (container) {
+      function onMouseMove(e) {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const width = rect.width || 1;
+        let ratio = x / width;
+        if (ratio < 0) ratio = 0;
+        if (ratio > 1) ratio = 1;
+
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        container.scrollLeft = maxScroll * ratio;
+      }
+
+      container.addEventListener('mousemove', onMouseMove);
+    });
+  });
+</script>
 
 </body>
 </html>

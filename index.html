@@ -520,6 +520,103 @@
     border-top: 1px solid var(--kraft-light);
     margin: 48px 0;
   }
+
+  /* ============================
+     МОБИЛЬНАЯ АДАПТАЦИЯ
+     ============================ */
+
+  @media (max-width: 768px) {
+
+    /* Хедер */
+    .header {
+      padding: 24px 20px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .header-logo { font-size: 36px; letter-spacing: -2px; }
+    .header-meta { text-align: left; }
+    .header-meta h2 { font-size: 15px; }
+
+    /* Бриф-бар */
+    .brief-bar {
+      padding: 16px 20px;
+      gap: 20px;
+    }
+
+    /* Основной контент */
+    .page {
+      padding: 24px 16px 48px;
+    }
+
+    /* Заголовок концепта */
+    .concept-header {
+      padding: 20px 20px;
+      gap: 16px;
+    }
+    .concept-number { font-size: 48px; min-width: 56px; }
+    .concept-title-block h3 { font-size: 20px; }
+    .concept-subtitle { font-size: 11px; }
+
+    /* Сторибоард */
+    .concept-storyboard {
+      padding: 20px 16px;
+      overflow-x: auto;
+    }
+
+    /* Кадры — горизонтальный скролл на мобиле */
+    .frames {
+      overflow-x: auto;
+      padding-right: 16px;
+      padding-bottom: 8px;
+      gap: 16px;
+    }
+
+    .frame {
+      width: 120px;
+    }
+
+    .frame-thumb {
+      width: 110px;
+      height: 196px;
+    }
+
+    /* Для hover-фрейма в концепте 3 */
+    .f3c-hover {
+      width: 110px !important;
+      height: 196px !important;
+    }
+
+    .frame-desc { font-size: 11px; }
+    .frame-note { font-size: 10px; }
+    .frame-time { font-size: 9px; }
+
+    /* Детали */
+    .concept-details {
+      padding: 20px 20px;
+    }
+
+    /* Палитра */
+    .palette { flex-wrap: wrap; }
+    .swatch { width: 28px; height: 28px; }
+
+    /* Марджины концептов */
+    .concept { margin-bottom: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .header-logo { font-size: 28px; }
+    .concept-number { font-size: 40px; }
+    .concept-title-block h3 { font-size: 17px; }
+    .page { padding: 16px 12px 32px; }
+    .concept-storyboard { padding: 16px 12px; }
+    .concept-details { padding: 16px 16px; }
+    .concept-header { padding: 16px 16px; }
+
+    .frame { width: 100px; }
+    .frame-thumb { width: 90px; height: 160px; }
+    .f3c-hover { width: 90px !important; height: 160px !important; }
+  }
 </style>
 </head>
 <body>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>edsmart — Концепты рилс</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --kraft: #C8A97E;
+    --kraft-light: #E8D5B5;
+    --kraft-dark: #8B6B45;
+    --mushroom: #7D6B55;
+    --green: #4A6741;
+    --cream: #F5EFE6;
+    --dark: #1C1C1C;
+    --mid: #3D3530;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--dark);
+    padding: 48px 60px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    font-size: 52px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -3px;
+    line-height: 1;
+  }
+
+  .header-logo span {
+    color: var(--kraft);
+  }
+
+  .header-meta {
+    text-align: right;
+  }
+
+  .header-meta p {
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header-meta h2 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  /* TZ BRIEF BAR */
+  .brief-bar {
+    background: var(--kraft-dark);
+    padding: 20px 60px;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .brief-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+
+  .brief-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  /* MAIN CONTENT */
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 60px 80px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--kraft-dark);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--kraft-light);
+  }
+
+  /* CONCEPT CARD */
+  .concept {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+
+  .concept-header {
+    padding: 32px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .concept-number {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -4px;
+    min-width: 80px;
+  }
+
+  .concept-1 .concept-number { color: var(--kraft); }
+  .concept-2 .concept-number { color: var(--green); }
+  .concept-3 .concept-number { color: var(--mushroom); }
+
+  .concept-title-block h3 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    color: var(--dark);
+  }
+
+  .concept-subtitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mushroom);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .concept-mood {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-kraft { background: var(--kraft-light); color: var(--kraft-dark); }
+  .tag-green { background: #D6E8D3; color: var(--green); }
+  .tag-dark { background: #E8E3DF; color: var(--mushroom); }
+
+  .concept-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .concept-storyboard {
+    padding: 32px 40px;
+    border-right: 1px solid var(--cream);
+  }
+
+  .concept-details {
+    padding: 32px 40px;
+  }
+
+  .block-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--mushroom);
+    margin-bottom: 16px;
+  }
+
+  /* STORYBOARD FRAMES */
+  .frames {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .frame {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .frame-thumb {
+    width: 90px;
+    height: 160px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .frame-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+  }
+
+  .frame-info {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .frame-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--mushroom);
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .frame-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .frame-note {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+  }
+
+  /* DETAIL BLOCKS */
+  .detail-group {
+    margin-bottom: 24px;
+  }
+
+  .detail-group p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .detail-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .detail-list li {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .detail-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--kraft);
+    font-weight: 700;
+  }
+
+  /* COLOR PALETTE */
+  .palette {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .swatch-label {
+    font-size: 9px;
+    color: #999;
+    text-align: center;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .swatch-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* TRANSITIONS */
+  .transition-bar {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .trans-tag {
+    background: var(--cream);
+    border: 1px solid var(--kraft-light);
+    color: var(--mushroom);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  /* CONCEPT ACCENT BARS */
+  .concept-1 .concept-header { background: linear-gradient(135deg, #FDF6EC 0%, #fff 60%); }
+  .concept-2 .concept-header { background: linear-gradient(135deg, #EFF5EE 0%, #fff 60%); }
+  .concept-3 .concept-header { background: linear-gradient(135deg, #F2EDE8 0%, #fff 60%); }
+
+  /* FRAME THUMBNAILS - CONCEPT 1 */
+  .f1a { background: url('imgs/f27735f6d89991ed6c89f8d8c4d89d80.jpg') center/cover no-repeat; }
+  .f1b { background: url('imgs/hf_20260309_144739_7eb26ebe-fbe7-44cf-8845-87c4a1654c4d.jpeg') center/cover no-repeat; }
+  .f1c { background: url('imgs/Instagram story - 1.png') center/cover no-repeat; }
+  .f1d { background: url('imgs/a86b848e28aaf8d563bdac3c7b2b5fe8.jpg') center/cover no-repeat; }
+  .f1e { background: url('imgs/921c507974d4e399bae8ce7ab565bee1.jpg') center/cover no-repeat; }
+
+  /* FRAME THUMBNAILS - CONCEPT 2 */
+  .f2a { background: url('imgs/hf_20260309_145614_5dcb8717-03ba-4dd6-9afc-e14ebd3f89cf.jpeg') center/cover no-repeat; }
+  .f2b { background: url('imgs/hf_20260309_154730_108d1e6b-e783-4659-af84-d85a4530813c.jpeg') center/cover no-repeat; }
+  .f2c { background: url('imgs/Instagram story - 2.png') center/cover no-repeat; }
+  .f2d { background: url('imgs/hf_20260309_154044_4c91bde3-6fb9-4559-bdc7-02d2dd591eb9.jpeg') center/cover no-repeat; }
+  .f2e { background: url('imgs/31075f0cea958fc1e3453cf8f348cc5c.jpg') center/cover no-repeat; }
+
+  /* FRAME THUMBNAILS - CONCEPT 3 */
+  .f3a { background: url('imgs/f27735f6d89991ed6c89f8d8c4d89d80.jpg') center/cover no-repeat; }
+  .f3b { background: url('imgs/Instagram story - 3.png') center/cover no-repeat; }
+  .f3c { background: linear-gradient(160deg, #C8A97E, #E8D5B5); }
+  .f3d { background: url('imgs/hf_20260309_155401_9da788aa-1889-4dcf-9d18-15e8f1e0f00d.jpeg') center/cover no-repeat; }
+  .f3e { background: url('imgs/hf_20260309_155746_a80f3c05-995c-4e4f-82e0-a4dde9949600.jpeg') center/cover no-repeat; }
+
+  .frame-icon {
+    font-size: 22px;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+  }
+
+  /* COLLAGE INDICATOR */
+  .collage-frame .frame-thumb {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .collage-row {
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* DURATION BADGE */
+  .duration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--dark);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--kraft);
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--dark);
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-brand {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--kraft);
+    letter-spacing: -1px;
+  }
+
+  /* KEY SCENE STRIP */
+  .key-scenes {
+    background: var(--cream);
+    padding: 20px 40px;
+    border-top: 1px solid var(--kraft-light);
+  }
+
+  .key-scenes-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mushroom);
+    margin-bottom: 12px;
+  }
+
+  .scenes-strip {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .scene-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border: 1px solid var(--kraft-light);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mid);
+  }
+
+  .scene-chip .icon { font-size: 14px; }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--kraft-light);
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">ed<span>.</span></div>
+  <div class="header-meta">
+    <p>edsmart / mushrooms soup</p>
+    <h2>Концепты для рилс</h2>
+    <div class="duration-badge" style="margin-top:12px;">
+      <span class="dot"></span> Вертикальный формат · ~15 сек
+    </div>
+  </div>
+</div>
+
+<!-- BRIEF BAR -->
+<div class="brief-bar">
+  <div>
+    <div class="brief-label">Формат</div>
+    <div class="brief-value">Reels / Shorts · 9:16</div>
+  </div>
+  <div>
+    <div class="brief-label">Продукт</div>
+    <div class="brief-value">Грибной суп — коробка + саше</div>
+  </div>
+  <div>
+    <div class="brief-label">Стиль</div>
+    <div class="brief-value">Макро + коллажи + живые кадры</div>
+  </div>
+  <div>
+    <div class="brief-label">Референс</div>
+    <div class="brief-value">VIBE Dark Man's — кинематограф. макро</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="section-title">Три концептуальных направления</div>
+
+  <!-- ============================
+       CONCEPT 1
+  ============================= -->
+  <div class="concept concept-1">
+    <div class="concept-header">
+      <div class="concept-number">01</div>
+      <div class="concept-title-block">
+        <div class="concept-subtitle">Тёплый / Натуральный</div>
+        <h3>«Лесная глубина»</h3>
+        <div class="concept-mood">
+          <span class="tag tag-kraft">Медленный темп</span>
+          <span class="tag tag-green">Сенсорное погружение</span>
+          <span class="tag tag-kraft">Природные текстуры</span>
+          <span class="tag tag-dark">Уют</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-body">
+      <div class="concept-storyboard">
+        <div class="block-label">Раскадровка · ~15 сек</div>
+        <div class="frames">
+
+          <div class="frame">
+            <div class="frame-thumb f1a">
+
+            </div>
+            <div class="frame-info">
+              <div class="frame-time">0–2 с · Открытие</div>
+              <div class="frame-desc">Макро: текстура шляпки гриба заполняет весь экран</div>
+              <div class="frame-note">Фокус скользит вдоль поверхности, тёмный фон</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f1c"></div>
+            <div class="frame-info">
+              <div class="frame-time">2–5 с · Коллаж</div>
+              <div class="frame-desc">Тройной стэк: грибы сверху / зелень посередине / сухарики снизу</div>
+              <div class="frame-note">Как в референсе — три полосы с макро-текстурами</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f1b"></div>
+            <div class="frame-info">
+              <div class="frame-time">5–8 с · Продукт</div>
+              <div class="frame-desc">Коробка edsmart медленно выходит из облака пара</div>
+              <div class="frame-note">Мягкий swipe-переход, тёплый свет снизу</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f1d"></div>
+            <div class="frame-info">
+              <div class="frame-time">8–12 с · Процесс</div>
+              <div class="frame-desc">Парень замешивает суп — крупный план рук и ложки</div>
+              <div class="frame-note">Средний план → макро кружащегося бульона</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f1e"></div>
+            <div class="frame-info">
+              <div class="frame-time">12–15 с · Завершение</div>
+              <div class="frame-desc">Пар поднимается над готовым блюдом — логотип на тёмном</div>
+              <div class="frame-note">Fade to black + «ed» центрированно</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="concept-details">
+        <div class="detail-group">
+          <div class="block-label">Настроение и атмосфера</div>
+          <p>Медленное, сенсорное, почти ASMR-видео. Зритель буквально «чувствует» лес и тепло. Темп неторопливый, как приготовление хорошего супа.</p>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Ключевые приёмы</div>
+          <ul class="detail-list">
+            <li>Макро в темноте с точечным светом — как в референсе с перцем и гранатом</li>
+            <li>Тройной коллаж из текстур ингредиентов (по образцу референса)</li>
+            <li>Пар как связующий визуальный элемент между сценами</li>
+            <li>Рефлекс крафт-упаковки на деревянной/глиняной поверхности</li>
+            <li>Ложка в супе как аналог «жидкости на руке» из референса</li>
+          </ul>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Цветовая палитра</div>
+          <div class="palette">
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#1C1208;"></div>
+              <div class="swatch-label">Ночь</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#6B4A2A;"></div>
+              <div class="swatch-label">Земля</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#C8A97E;"></div>
+              <div class="swatch-label">Крафт</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#4A6741;"></div>
+              <div class="swatch-label">Лес</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#E8D5B5;"></div>
+              <div class="swatch-label">Пар</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Переходы</div>
+          <div class="transition-bar">
+            <span class="trans-tag">Wipe через пар</span>
+            <span class="trans-tag">Slow zoom-in</span>
+            <span class="trans-tag">Расфокус → фокус</span>
+            <span class="trans-tag">Fade to dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-scenes">
+      <div class="key-scenes-label">Все кадры из ТЗ ✓</div>
+      <div class="scenes-strip">
+        <div class="scene-chip"><span class="icon">📦</span> Коробка edsmart</div>
+        <div class="scene-chip"><span class="icon">🧧</span> Саше</div>
+        <div class="scene-chip"><span class="icon">🔬</span> Макро консистенции супа</div>
+        <div class="scene-chip"><span class="icon">🍄</span> Грибы</div>
+        <div class="scene-chip"><span class="icon">🌿</span> Зелень</div>
+        <div class="scene-chip"><span class="icon">🍞</span> Сухарики</div>
+        <div class="scene-chip"><span class="icon">🧑‍🍳</span> Парень замешивает</div>
+        <div class="scene-chip"><span class="icon">🖼</span> Коллаж ингредиентов</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       CONCEPT 2
+  ============================= -->
+  <div class="concept concept-2">
+    <div class="concept-header">
+      <div class="concept-number">02</div>
+      <div class="concept-title-block">
+        <div class="concept-subtitle">Динамичный / Lifestyle</div>
+        <h3>«5 секунд до тепла»</h3>
+        <div class="concept-mood">
+          <span class="tag tag-green">Быстрый монтаж</span>
+          <span class="tag tag-kraft">Живой герой</span>
+          <span class="tag tag-dark">Городской ритм</span>
+          <span class="tag tag-green">Честный продукт</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-body">
+      <div class="concept-storyboard">
+        <div class="block-label">Раскадровка · ~15 сек</div>
+        <div class="frames">
+
+          <div class="frame">
+            <div class="frame-thumb f2a"></div>
+            <div class="frame-info">
+              <div class="frame-time">0–2 с · Hook</div>
+              <div class="frame-desc">Крупный план: руки рвут саше — порошок высыпается в slow-mo</div>
+              <div class="frame-note">Захватывающий крупный план с первого кадра</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f2c"></div>
+            <div class="frame-info">
+              <div class="frame-time">2–5 с · Ингредиенты</div>
+              <div class="frame-desc">Быстрые cut-cuts: вода льётся → грибы → зелень → сухари</div>
+              <div class="frame-note">По одному кадру на каждый ингредиент, 0.5 с каждый</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f2d"></div>
+            <div class="frame-info">
+              <div class="frame-time">5–10 с · Герой</div>
+              <div class="frame-desc">Парень на кухне — средний план: размешивает, пробует, улыбается</div>
+              <div class="frame-note">Живой, нестагированный look</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f2b"></div>
+            <div class="frame-info">
+              <div class="frame-time">10–13 с · Продукт-герой</div>
+              <div class="frame-desc">Коробка и саше рядом — чистый фон, кинематограф. свет</div>
+              <div class="frame-note">Статичный shot, уверенный</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f2e"></div>
+            <div class="frame-info">
+              <div class="frame-time">13–15 с · Финал</div>
+              <div class="frame-desc">Тарелка с готовым супом сверху (flat-lay) + логотип</div>
+              <div class="frame-note">Pop transition на логотип edsmart</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="concept-details">
+        <div class="detail-group">
+          <div class="block-label">Настроение и атмосфера</div>
+          <p>Энергичный рилс в стиле «реальный человек, реальная еда». Фокус на скорости приготовления и простоте. Герой — молодой активный парень, которому важно есть вкусно и быстро.</p>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Ключевые приёмы</div>
+          <ul class="detail-list">
+            <li>Slow-motion в ключевых моментах (порошок, вода) → быстрый монтаж ингредиентов</li>
+            <li>Живой герой: нестандартные ракурсы, POV-взгляд через плечо</li>
+            <li>Контраст: тёмные кухонные кадры / чистый белый фон для продукта</li>
+            <li>Рваный ритм монтажа → замедление на продукте</li>
+            <li>Flat-lay суп в конце — «награда» зрителю</li>
+          </ul>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Цветовая палитра</div>
+          <div class="palette">
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#FAFAFA;"></div>
+              <div class="swatch-label">Белый</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#2C3A28;"></div>
+              <div class="swatch-label">Лес</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#C8A97E;"></div>
+              <div class="swatch-label">Крафт</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#D4C4A8;"></div>
+              <div class="swatch-label">Фон</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#1C1C1C;"></div>
+              <div class="swatch-label">Текст</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Переходы</div>
+          <div class="transition-bar">
+            <span class="trans-tag">Hard cut</span>
+            <span class="trans-tag">Смазка движением</span>
+            <span class="trans-tag">Whip pan</span>
+            <span class="trans-tag">Pop in (продукт)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-scenes" style="background:#EFF5EE; border-top: 1px solid #C8DCC4;">
+      <div class="key-scenes-label">Все кадры из ТЗ ✓</div>
+      <div class="scenes-strip">
+        <div class="scene-chip"><span class="icon">📦</span> Коробка edsmart</div>
+        <div class="scene-chip"><span class="icon">🧧</span> Саше</div>
+        <div class="scene-chip"><span class="icon">🔬</span> Порошок в slow-mo</div>
+        <div class="scene-chip"><span class="icon">🍄</span> Грибы</div>
+        <div class="scene-chip"><span class="icon">🌿</span> Зелень</div>
+        <div class="scene-chip"><span class="icon">🍞</span> Сухарики</div>
+        <div class="scene-chip"><span class="icon">🧑‍🍳</span> Парень готовит</div>
+        <div class="scene-chip"><span class="icon">🖼</span> Flat-lay финал</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       CONCEPT 3
+  ============================= -->
+  <div class="concept concept-3">
+    <div class="concept-header">
+      <div class="concept-number">03</div>
+      <div class="concept-title-block">
+        <div class="concept-subtitle">Кинематографичный / Текстурный</div>
+        <h3>«Чистая текстура»</h3>
+        <div class="concept-mood">
+          <span class="tag tag-dark">Минимализм</span>
+          <span class="tag tag-kraft">Премиум ощущение</span>
+          <span class="tag tag-dark">Близко к референсу</span>
+          <span class="tag tag-green">ASMR-эффект</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-body">
+      <div class="concept-storyboard">
+        <div class="block-label">Раскадровка · ~15 сек</div>
+        <div class="frames">
+
+          <div class="frame">
+            <div class="frame-thumb f3a"></div>
+            <div class="frame-info">
+              <div class="frame-time">0–3 с · Открытие</div>
+              <div class="frame-desc">Экстремальное макро: поверхность гриба на чёрном</div>
+              <div class="frame-note">Как кадр с перцем из референса — максимальная детализация</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f3b"></div>
+            <div class="frame-info">
+              <div class="frame-time">3–6 с · 3-panel коллаж</div>
+              <div class="frame-desc">Три горизонтальных полосы: гриб · бульон · пар — всё в движении</div>
+              <div class="frame-note">Точное повторение структуры из референса</div>
+            </div>
+          </div>
+
+          <div class="frame" style="align-items:flex-start;">
+            <div style="display:flex; gap:6px; flex-shrink:0;">
+              <div class="frame-thumb f3c1" style="width:90px; height:160px; border-radius:8px; background:url('imgs/hf_20260309_155427_94cb5731-324a-45ad-8d8b-5b666c7b8782.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
+              <div class="frame-thumb f3c2" style="width:90px; height:160px; border-radius:8px; background:url('imgs/hf_20260309_154803_e3daaf1d-2a16-4bed-978c-863add83f6df.jpeg') center/cover no-repeat; flex-shrink:0; position:relative; overflow:hidden;"></div>
+            </div>
+            <div class="frame-info">
+              <div class="frame-time">6–9 с · Продукт</div>
+              <div class="frame-desc">Гриб «тонет» в супе / плавает на поверхности бульона</div>
+              <div class="frame-note">Вдохновлено кадром с флаконом VIBE под водой</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f3d"></div>
+            <div class="frame-info">
+              <div class="frame-time">9–12 с · Процесс</div>
+              <div class="frame-desc">Макро: ложка в руке размешивает суп — крупные круги бульона</div>
+              <div class="frame-note">Аналог кадра «гель на руке» — жидкая консистенция</div>
+            </div>
+          </div>
+
+          <div class="frame">
+            <div class="frame-thumb f3e"></div>
+            <div class="frame-info">
+              <div class="frame-time">12–15 с · Эндкард</div>
+              <div class="frame-desc">Чёрный экран → маленький логотип «ed» по центру</div>
+              <div class="frame-note">1:1 с форматом эндкарда референса VIBE</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="concept-details">
+        <div class="detail-group">
+          <div class="block-label">Настроение и атмосфера</div>
+          <p>Это самый близкий к референсу концепт по структуре и духу. Почти нет слов, только визуальные ощущения. Продукт воспринимается как что-то особенное и тщательно сделанное — за счёт высокой детализации и премиального монтажа.</p>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Ключевые приёмы</div>
+          <ul class="detail-list">
+            <li>Экстремальное макро как в референсе: зритель не сразу понимает что это</li>
+            <li>3-panel коллаж — точное воспроизведение структуры из видео-референса</li>
+            <li>Продукт «под водой» — wow-кадр, аналог флакона в воде</li>
+            <li>Финальный чёрный эндкард с логотипом — лаконично и запоминается</li>
+            <li>Нет диалогов, нет текста — только картинка и звук</li>
+          </ul>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Цветовая палитра</div>
+          <div class="palette">
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#0D0D0D;"></div>
+              <div class="swatch-label">Чёрный</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#3D2B1A;"></div>
+              <div class="swatch-label">Тёмный</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#7D6B55;"></div>
+              <div class="swatch-label">Гриб</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#C8A97E;"></div>
+              <div class="swatch-label">Крафт</div>
+            </div>
+            <div class="swatch-wrap">
+              <div class="swatch" style="background:#F5EFE6;"></div>
+              <div class="swatch-label">Пар</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <div class="block-label">Переходы</div>
+          <div class="transition-bar">
+            <span class="trans-tag">Slide-в-коллаж</span>
+            <span class="trans-tag">Morph по текстуре</span>
+            <span class="trans-tag">Slow dissolve</span>
+            <span class="trans-tag">Fade to black</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-scenes" style="background:#F2EDE8; border-top: 1px solid #D4C4A8;">
+      <div class="key-scenes-label">Все кадры из ТЗ ✓</div>
+      <div class="scenes-strip">
+        <div class="scene-chip"><span class="icon">📦</span> Коробка edsmart</div>
+        <div class="scene-chip"><span class="icon">🧧</span> Саше</div>
+        <div class="scene-chip"><span class="icon">🔬</span> Макро гриба</div>
+        <div class="scene-chip"><span class="icon">🖼</span> 3-panel коллаж</div>
+        <div class="scene-chip"><span class="icon">🥣</span> Консистенция супа</div>
+        <div class="scene-chip"><span class="icon">🧑‍🍳</span> Руки с ложкой</div>
+        <div class="scene-chip"><span class="icon">💨</span> Пар</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-title">Сравнение концептов</div>
+
+  <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow: 0 2px 20px rgba(0,0,0,0.06);">
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <thead>
+        <tr style="background:var(--dark);">
+          <th style="padding:14px 20px; text-align:left; color:rgba(255,255,255,0.5); font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase;">Параметр</th>
+          <th style="padding:14px 20px; text-align:center; color:var(--kraft); font-weight:700;">01 · Лесная глубина</th>
+          <th style="padding:14px 20px; text-align:center; color:#7EC88B; font-weight:700;">02 · 5 сек до тепла</th>
+          <th style="padding:14px 20px; text-align:center; color:#C8A97E; font-weight:700;">03 · Чистая текстура</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--cream);">
+          <td style="padding:14px 20px; font-weight:600; color:var(--mushroom);">Темп монтажа</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Медленный, плавный</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Быстрый, динамичный</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Медленный, кинема.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--cream); background:var(--cream);">
+          <td style="padding:14px 20px; font-weight:600; color:var(--mushroom);">Близость к референсу</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">70%</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">40%</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">90%</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--cream);">
+          <td style="padding:14px 20px; font-weight:600; color:var(--mushroom);">Сложность съёмки</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Средняя</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Низкая</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Высокая</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--cream); background:var(--cream);">
+          <td style="padding:14px 20px; font-weight:600; color:var(--mushroom);">Нужен ли актёр</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Да (руки)</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Да (весь)</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Только руки</td>
+        </tr>
+        <tr>
+          <td style="padding:14px 20px; font-weight:600; color:var(--mushroom);">Лучше подойдёт для</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Instagram / уютная аудитория</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">TikTok / молодая аудитория</td>
+          <td style="padding:14px 20px; text-align:center; color:var(--mid);">Instagram / премиум-позиц.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>edsmart · mushrooms soup · концепты рилс · 2026</p>
+  <div class="footer-brand">ed.</div>
+</div>
+
+</body>
+</html>
+
